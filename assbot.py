@@ -25,7 +25,6 @@ async def help(ctx):
     embed.add_field(name="!hello", value="Sends a hello message", inline=False)
     embed.add_field(name="!bashir", value="Displays a Bating Bashir", inline=False)
     embed.add_field(name="!what", value="Says 'What back, Poonspoon?'", inline=False)
-    embed.add_field(name="!hotone", value="Displays HOT ONE", inline=False)
     embed.add_field(name="!harf", value="Displays Louis the Yellow Dog", inline=False)
     embed.add_field(name="!fuckoff [user]", value="Sends a fuckoff message to string specified", inline=False)
     await ctx.send(embed=embed)
@@ -77,20 +76,6 @@ async def what_error(ctx, error):
     if isinstance(error, commands.CheckFailure):
         await ctx.send("You don't have permission, numbnuts")
 
-@bot.command()
-async def hotone(ctx):
-    embed = discord.Embed(
-        title="Hot One",
-        description="Attention Bajoran Workers, it sure is a Hot One today, huh?",
-        color=discord.Color.dark_gold(),
-        author="Dave"
-    )
-    embed.set_image(url="https://i.imgur.com/Zes8WN5.jpg")
-    await ctx.send(embed=embed)
-@hotone.error
-async def hotone_error(ctx, error):
-    if isinstance(error, commands.CheckFailure):
-        await ctx.send("You don't have permission, numbnuts")
 
 @bot.command()
 async def harf(ctx):
