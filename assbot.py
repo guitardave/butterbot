@@ -32,8 +32,8 @@ async def help(ctx):
 
 @help.error
 async def help_error(ctx, error):
-    if isinstance(error, commands.CheckFailure):
-        await ctx.send("You don't have permission to use this command")
+    if isinstance(error, commands.BadArgument):
+        await ctx.send("Ya did something wrong there numbnuts")
 
 
 @bot.command()
@@ -43,8 +43,8 @@ async def hello(ctx):
 
 @hello.error
 async def hello_error(ctx, error):
-    if isinstance(error, commands.CheckFailure):
-        await ctx.send("You don't have permission to use this command")
+    if isinstance(error, commands.BadArgument):
+        await ctx.send("Ya did something wrong there numbnuts")
 
 
 @bot.command()
@@ -57,8 +57,8 @@ async def fuckoff(ctx, arg1=None):
         
 @fuckoff.error
 async def fuckoff_error(ctx, error):
-    if isinstance(error, commands.CheckFailure):
-        await ctx.send("You don't have permission to use this command")
+    if isinstance(error, commands.BadArgument):
+        await ctx.send("Ya did something wrong there numbnuts")
 
 
 @bot.command()
@@ -74,8 +74,8 @@ async def bashir(ctx):
     
 @bashir.error
 async def bashir_error(ctx, error):
-    if isinstance(error, commands.CheckFailure):
-        await ctx.send("You don't have permission to use this command")
+    if isinstance(error, commands.BadArgument):
+        await ctx.send("Ya did something wrong there numbnuts")
 
 
 @bot.command()
@@ -85,8 +85,8 @@ async def what(ctx):
     
 @what.error
 async def what_error(ctx, error):
-    if isinstance(error, commands.CheckFailure):
-        await ctx.send("You don't have permission, numbnuts")
+    if isinstance(error, commands.BadArgument):
+        await ctx.send("Ya did something wrong there numbnuts")
 
 
 @bot.command()
@@ -99,6 +99,12 @@ async def hotone(ctx):
     )
     embed.set_image(url="https://i.imgur.com/Zes8WN5.jpg")
     await ctx.send(embed=embed)
+    
+    
+@hotone.error
+async def hotone_error(ctx, error):
+    if isinstance(error, commands.BadArgument):
+        await ctx.send("Ya did something wrong there numbnuts")
 
 
 @bot.command()
@@ -114,8 +120,8 @@ async def harf(ctx):
     
 @harf.error
 async def harf_error(ctx, error):
-    if isinstance(error, commands.CheckFailure):
-        await ctx.send("You don't have permission, numbnuts")
+    if isinstance(error, commands.BadArgument):
+        await ctx.send("Ya did something wrong there numbnuts")
 
 
 ### ROLES 5/29/2021 DC
@@ -128,8 +134,8 @@ async def ore(ctx):
     
 @ore.error
 async def ore_error(ctx, error):
-    if isinstance(error, commands.checkFailure):
-        await ctx.send("You don't have permission, numbnuts")
+    if isinstance(error, commands.BadArgument):
+        await ctx.send("a did something wrong there numbnuts")
 
 
 bot.run(token)
