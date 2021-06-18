@@ -135,6 +135,7 @@ async def ore(ctx):
 @ore.error
 async def ore_error(ctx, error):
     if isinstance(error, commands.BadArgument):
+        traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
         await ctx.send("a did something wrong there numbnuts")
 
 
