@@ -6,11 +6,11 @@ from datetime import datetime
 from discord.ext import commands
 import discord
 
+
 token = "ODQ0MjU1MDQ5ODAxNzkzNTg2.YKPvyQ.TyzDge3ms892_3j3EJTi5vLfFuM"
-
 bot = commands.Bot(command_prefix='!')
-
 bot.remove_command('help')
+
 
 @bot.command()
 async def help(ctx):
@@ -29,19 +29,23 @@ async def help(ctx):
     embed.add_field(name="!fuckoff [user]", value="Sends a fuckoff message to string specified", inline=False)
     await ctx.send(embed=embed)
 
+
 @help.error
 async def help_error(ctx, error):
     if isinstance(error, commands.CheckFailure):
         await ctx.send("You don't have permission to use this command")
 
+
 @bot.command()
 async def hello(ctx):
     await ctx.send("Hello, " + str(ctx.author))
+
 
 @hello.error
 async def hello_error(ctx, error):
     if isinstance(error, commands.CheckFailure):
         await ctx.send("You don't have permission to use this command")
+
 
 @bot.command()
 async def fuckoff(ctx, arg1=None):
@@ -49,10 +53,13 @@ async def fuckoff(ctx, arg1=None):
         await ctx.send("You have to tell someone to fuckoff...")
     else:
         await ctx.send(str(ctx.author) + " is telling " + str(arg1) + " to FUCKOFF")
+        
+        
 @fuckoff.error
 async def fuckoff_error(ctx, error):
     if isinstance(error, commands.CheckFailure):
         await ctx.send("You don't have permission to use this command")
+
 
 @bot.command()
 async def bashir(ctx):
@@ -63,18 +70,35 @@ async def bashir(ctx):
     )
     embed.set_image(url="https://i.imgur.com/H0cnKwL.jpg")
     await ctx.send(embed=embed)
+    
+    
 @bashir.error
 async def bashir_error(ctx, error):
     if isinstance(error, commands.CheckFailure):
         await ctx.send("You don't have permission to use this command")
 
+
 @bot.command()
 async def what(ctx):
     await ctx.send("What back, Poonspoon!")
+    
+    
 @what.error
 async def what_error(ctx, error):
     if isinstance(error, commands.CheckFailure):
         await ctx.send("You don't have permission, numbnuts")
+
+
+@bot.command()
+async def hotone(ctx):
+    embed = discord.Embed(
+        title="Hot One",
+        description="Attention Bajoran Workers, it sure is a Hot One today, huh?",
+        color=discord.Color.dark_gold(),
+        author="Dave"
+    )
+    embed.set_image(url="https://i.imgur.com/Zes8WN5.jpg")
+    await ctx.send(embed=embed)
 
 
 @bot.command()
@@ -86,6 +110,8 @@ async def harf(ctx):
     )
     embed.set_image(url="https://i.imgur.com/IlhLUSI.jpg")
     await ctx.send(embed=embed)
+    
+    
 @harf.error
 async def harf_error(ctx, error):
     if isinstance(error, commands.CheckFailure):
@@ -98,10 +124,13 @@ async def ore(ctx):
     role = discord.utils.get(guild.roles, name="Ore Processors")
     await payload.member.add_roles(role)
     await ctx.send(str(member.name) +  " just added the Ore Processsors Role")
+    
+    
 @ore.error
 async def ore_error(ctx, error):
     if isinstance(error, commands.checkFailure):
         await ctx.send("You don't have permission, numbnuts")
+
 
 bot.run(token)
 
