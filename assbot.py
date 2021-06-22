@@ -49,8 +49,8 @@ async def i_luv_njones(ctx):
     await ctx.send(embed=embed)
 
 
-@hello.error
-async def hello_error(ctx, error):
+@i_luv_njones.error
+async def i_luv_njones_error(ctx, error):
     if isinstance(error, commands.BadArgument):
         await ctx.send("Ya did something wrong there numbnuts")
 
