@@ -22,12 +22,13 @@ async def help(ctx):
     )
     embed.set_thumbnail(url="https://i.imgur.com/H0cnKwL.jpg")
     embed.add_field(name="!help", value="List all commands", inline=False)
-    embed.add_field(name="!hello", value="Sends a hello message", inline=False)
     embed.add_field(name="!bashir", value="Bating Bashir!", inline=False)
     embed.add_field(name="!cardi_pig", value="CARDI PIG!", inline=False)
     embed.add_field(name="!what", value="Says 'What back, Poonspoon?'", inline=False)
     embed.add_field(name="!harf", value="Louis the Yellow Dog!", inline=False)
     embed.add_field(name="!fuckoff 'string'", value="Sends a fuckoff message to string specified", inline=False)
+    embed.add_field(name="!hotone", value="You know this one...", inline=False)
+    embed.add_field(name="!i_luv_njones", value="Secret message...", inline=False)
     await ctx.send(embed=embed)
 
 
@@ -38,8 +39,14 @@ async def help_error(ctx, error):
 
 
 @bot.command()
-async def hello(ctx):
-    await ctx.send("Hello, " + str(ctx.author))
+async def i_luv_njones(ctx):
+        embed = discord.Embed(
+        title="LONG LIVE THE ARTICHOKE!",
+        color=discord.Color.blurple(),
+        author="Dave"
+    )
+    embed.set_image(url="https://i.imgur.com/623OCO0.jpg")
+    await ctx.send(embed=embed)
 
 
 @hello.error
