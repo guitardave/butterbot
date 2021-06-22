@@ -23,10 +23,11 @@ async def help(ctx):
     embed.set_thumbnail(url="https://i.imgur.com/H0cnKwL.jpg")
     embed.add_field(name="!help", value="List all commands", inline=False)
     embed.add_field(name="!hello", value="Sends a hello message", inline=False)
-    embed.add_field(name="!bashir", value="Displays a Bating Bashir", inline=False)
+    embed.add_field(name="!bashir", value="Bating Bashir!", inline=False)
+    embed.add_field(name="!cardi_pig", value="CARDI PIG!", inline=False)
     embed.add_field(name="!what", value="Says 'What back, Poonspoon?'", inline=False)
-    embed.add_field(name="!harf", value="Displays Louis the Yellow Dog", inline=False)
-    embed.add_field(name="!fuckoff [user]", value="Sends a fuckoff message to string specified", inline=False)
+    embed.add_field(name="!harf", value="Louis the Yellow Dog!", inline=False)
+    embed.add_field(name="!fuckoff 'string'", value="Sends a fuckoff message to string specified", inline=False)
     await ctx.send(embed=embed)
 
 
@@ -74,6 +75,23 @@ async def bashir(ctx):
     
 @bashir.error
 async def bashir_error(ctx, error):
+    if isinstance(error, commands.BadArgument):
+        await ctx.send("Ya did something wrong there numbnuts")
+        
+        
+@bot.command()
+async def cardi_pig(ctx):
+    embed = discord.Embed(
+        title="Cardi Pig",
+        color=discord.Color.blurple(),
+        author="Dave"
+    )
+    embed.set_image(url="https://i.imgur.com/tUdZ7R4.jpg")
+    await ctx.send(embed=embed)
+    
+    
+@bashir.error
+async def cardi_pig_error(ctx, error):
     if isinstance(error, commands.BadArgument):
         await ctx.send("Ya did something wrong there numbnuts")
 
