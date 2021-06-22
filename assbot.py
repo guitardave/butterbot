@@ -40,7 +40,7 @@ async def help_error(ctx, error):
 
 @bot.command()
 async def i_luv_njones(ctx):
-        embed = discord.Embed(
+    embed = discord.Embed(
         title="LONG LIVE THE ARTICHOKE!",
         color=discord.Color.blurple(),
         author="Dave"
