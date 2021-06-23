@@ -109,8 +109,8 @@ async def cardi_pig_error(ctx, error):
     if isinstance(error, commands.BadArgument):
         await ctx.send("Ya did something wrong there numbnuts")
       
- # CP ALIAS     
- @bot.command()
+# CP ALIAS     
+@bot.command()
 async def cp(ctx):
     embed = discord.Embed(
         title="Cardi Pig",
