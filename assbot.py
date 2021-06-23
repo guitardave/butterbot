@@ -9,9 +9,12 @@ import discord
 
 token = "ODQ0MjU1MDQ5ODAxNzkzNTg2.YKPvyQ.TyzDge3ms892_3j3EJTi5vLfFuM"
 bot = commands.Bot(command_prefix='!')
+
+### HELP OVERRRIDE
 bot.remove_command('help')
 
 
+### HELP BOX
 @bot.command()
 async def help(ctx):
     embed = discord.Embed(
@@ -38,6 +41,7 @@ async def help_error(ctx, error):
         await ctx.send("Ya did something wrong there numbnuts")
 
 
+### I LUV N JONES
 @bot.command()
 async def i_luv_njones(ctx):
     embed = discord.Embed(
@@ -55,6 +59,7 @@ async def i_luv_njones_error(ctx, error):
         await ctx.send("Ya did something wrong there numbnuts")
 
 
+### FUCKOFF TO STRING
 @bot.command()
 async def fuckoff(ctx, arg1=None):
     if arg1 == None:
@@ -69,6 +74,7 @@ async def fuckoff_error(ctx, error):
         await ctx.send("Ya did something wrong there numbnuts")
 
 
+### BATING BASHIR
 @bot.command()
 async def bashir(ctx):
     embed = discord.Embed(
@@ -85,7 +91,8 @@ async def bashir_error(ctx, error):
     if isinstance(error, commands.BadArgument):
         await ctx.send("Ya did something wrong there numbnuts")
         
-        
+
+### CARDI PIG        
 @bot.command()
 async def cardi_pig(ctx):
     embed = discord.Embed(
@@ -96,13 +103,31 @@ async def cardi_pig(ctx):
     embed.set_image(url="https://i.imgur.com/tUdZ7R4.jpg")
     await ctx.send(embed=embed)
     
-    
-@bashir.error
+
+@cardi_pig.error
 async def cardi_pig_error(ctx, error):
+    if isinstance(error, commands.BadArgument):
+        await ctx.send("Ya did something wrong there numbnuts")
+      
+ # CP ALIAS     
+ @bot.command()
+async def cp(ctx):
+    embed = discord.Embed(
+        title="Cardi Pig",
+        color=discord.Color.blurple(),
+        author="Dave"
+    )
+    embed.set_image(url="https://i.imgur.com/tUdZ7R4.jpg")
+    await ctx.send(embed=embed)
+    
+    
+@cp.error
+async def cp_error(ctx, error):
     if isinstance(error, commands.BadArgument):
         await ctx.send("Ya did something wrong there numbnuts")
 
 
+### WHAT
 @bot.command()
 async def what(ctx):
     await ctx.send("What back, Poonspoon!")
@@ -114,6 +139,7 @@ async def what_error(ctx, error):
         await ctx.send("Ya did something wrong there numbnuts")
 
 
+### HOT ONE
 @bot.command()
 async def hotone(ctx):
     embed = discord.Embed(
@@ -132,6 +158,7 @@ async def hotone_error(ctx, error):
         await ctx.send("Ya did something wrong there numbnuts")
 
 
+### HARF LOUIS THE DOG
 @bot.command()
 async def harf(ctx):
     embed = discord.Embed(
