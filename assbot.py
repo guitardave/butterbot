@@ -8,7 +8,7 @@ import discord
 import os
 
 
-token = os.getenv('DISCORD_TOKEN')
+token = os.environ.get('DISCORD_TOKEN')
 bot = commands.Bot(command_prefix='!')
 
 ### HELP OVERRRIDE
