@@ -5,9 +5,10 @@
 from datetime import datetime
 from discord.ext import commands
 import discord
+import os
 
 
-token = "ODQ0MjU1MDQ5ODAxNzkzNTg2.YKPvyQ.TyzDge3ms892_3j3EJTi5vLfFuM"
+token = os.getenv('DISCORD_TOKEN')
 bot = commands.Bot(command_prefix='!')
 
 ### HELP OVERRRIDE
