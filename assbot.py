@@ -33,6 +33,7 @@ async def help(ctx):
     embed.add_field(name="!fuckoff 'string'", value="Sends a fuckoff message to string specified", inline=False)
     embed.add_field(name="!hotone", value="You know this one...", inline=False)
     embed.add_field(name="!i_luv_njones", value="Secret message...", inline=False)
+    embed.add_field(name="!gb", value="Get Back to Work!", inline=False)
     await ctx.send(embed=embed)
 
 
@@ -124,6 +125,24 @@ async def cp(ctx):
     
 @cp.error
 async def cp_error(ctx, error):
+    if isinstance(error, commands.BadArgument):
+        await ctx.send("Ya did something wrong there numbnuts")
+
+
+# Get back to work! 
+@bot.command()
+async def gb(ctx):
+    embed = discord.Embed(
+        title="Get back to work!",
+        color=discord.Color.blurple(),
+        author="Dave"
+    )
+    embed.set_image(url="https://i.imgur.com/5uJutZ1.jpg")
+    await ctx.send(embed=embed)
+    
+    
+@gb.error
+async def gb_error(ctx, error):
     if isinstance(error, commands.BadArgument):
         await ctx.send("Ya did something wrong there numbnuts")
 
