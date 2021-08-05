@@ -15,6 +15,7 @@ import os
 
 
 token = os.environ.get('DISCORD_TOKEN')
+mods = os.environ.get('DISCORD_MODS')
 bot = commands.Bot(command_prefix='!')
 
 ### HELP OVERRRIDE
