@@ -1,7 +1,13 @@
-# ASSBOT.PY free for use
-# * DC 5/18/2021 v 0.1 - first release announces calls user "DUMBASS" on comment-edit and
-#   says "HELLO" to me; also responds with dog emoji when user types "harf"
-# * DC 5/19/2021 v 0.2 - adding a few basic commands (hello, fuckoff, hotone)
+"""
+ASSBOT.PY free for use
+* DC 5/18/2021 v 0.1 - first release announces calls user "DUMBASS" on comment-edit and
+  says "HELLO" to me; also responds with dog emoji when user types "harf"
+* DC 5/19/2021 v 0.2 - adding a few basic commands (hello, fuckoff, hotone)
+* DC 7/8/2021 v 0.2 - moved token to env var
+* DC 8/5/2021 v 0.2.1 - added !gb command sending "GET BACK TO WORK!" and image
+* DC 8/5/2021 v 0.3 adding support for ADMIN commands: kick, ban, unban
+"""
+
 from datetime import datetime
 from discord.ext import commands
 import discord
@@ -34,6 +40,9 @@ async def help(ctx):
     embed.add_field(name="!hotone", value="You know this one...", inline=False)
     embed.add_field(name="!i_luv_njones", value="Secret message...", inline=False)
     embed.add_field(name="!gb", value="Get Back to Work!", inline=False)
+    embed.add_field(name="!kick *user", value="Bans a user (ADMIN ONLY)", inline=False)
+    embed.add_field(name="!ban *user", value="Bans a user (ADMIN ONLY)", inline=False)
+    embed.add_field(name="!unban *user", value="Unbans a user (ADMIN ONLY)", inline=False)
     await ctx.send(embed=embed)
 
 
@@ -198,17 +207,53 @@ async def harf_error(ctx, error):
 
 ### ROLES 5/29/2021 DC
 @bot.command()
+@commands.has_role('Happy')
 async def ore(ctx):
     role = discord.utils.get(guild.roles, name="Ore Processors")
     await payload.member.add_roles(role)
     await ctx.send(str(member.name) +  " just added the Ore Processsors Role")
-    
-    
+
+
 @ore.error
 async def ore_error(ctx, error):
     if isinstance(error, commands.BadArgument):
         traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
         await ctx.send("a did something wrong there numbnuts")
+
+
+@bot.command()
+@commands.has_role(mods)
+async def kick(ctx, member: discord.Member, *, reason):
+    await member.kick(reason=reason)
+
+@kick.error
+async def kick_error(ctx, error):
+    if isinstance(error, commands.CheckFailure):
+        await ctx.send("You don't have permission to use this command")
+
+@bot.command()
+@commands.has_role(mods)
+async def ban(ctx, member: discord.Member, *, reason):
+    await member.ban(reason=reason)
+
+@ban.error
+async def ban_error(ctx, error):
+    if isinstance(error, commands.CheckFailure):
+        await ctx.send("You don't have permission to use this command")
+
+@bot.command()
+@commands.has_role(mods)
+async def unban(ctx, *, member):
+    banned_members = await ctx.guild.bans()
+    for person in banned_members:
+        user = person.user
+        if member == str(user):
+            await ctx.guild.unban(user)
+
+@unban.error
+async def unban_error(ctx, error):
+    if isinstance(error, commands.CheckFailure):
+        await ctx.send("You don't have permission to use this command")
 
 
 bot.run(token)
